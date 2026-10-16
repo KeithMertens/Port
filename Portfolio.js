@@ -9,7 +9,7 @@ const WORKS = [
   ['CATHUB', 'Web app', 'Dating site for cats', 'https://github.com/KeithMertens/Website', 'Images/catttt.png'],
   ['Student Management', 'Full-stack', 'Student records system', 'https://github.com/KeithMertens/STUDFORSHARING', 'Images/screen.png'],
   ['WuHotel', 'Website WuHotel', 'a website with a real time booking systemm and database', 'https://wuhotel.vercel.app/', 'Images/Website.png'],
-  ['Project 04', 'UI / UX', 'Add your description here', '', ''], ]
+  ]
   
 const grid = document.getElementById('stack');
 grid.innerHTML = WORKS.map(([name, tag, desc, url, image = ''], i) => {
