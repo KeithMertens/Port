@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kenjie — Full-Stack Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Portfolio.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="Portfolio.config.js" ></script>
+</head>
+<body class="font-sans antialiased">
+
+<!-- 3D background canvas (Three.js). To use Spline instead when self-hosting, replace with:
+     <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+     <spline-viewer url="YOUR_SCENE_URL"></spline-viewer> -->
+<canvas id="bg" class="fixed inset-0 z-0 h-full w-full pointer-events-none" aria-hidden="true"></canvas>
+
+<!-- NAV -->
+<header class="site-header fixed inset-x-0 top-0 z-50 px-4 sm:px-8">
+  <nav class="glass mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3">
+    <a href="#top" class="text-lg font-bold tracking-tight">Kenjie<span class="text-accent">.</span></a>
+    <div class="hidden gap-8 text-sm text-white/70 md:flex">
+      <a href="#about" class="hover:text-white">About</a><a href="#skills" class="hover:text-white">Skills</a><a href="#services" class="hover:text-white">Services</a><a href="#projects" class="hover:text-white">Projects</a><a href="#testimonials" class="hover:text-white">Reviews</a><a href="#contact" class="hover:text-white">Contact</a>
+    </div>
+    <a href="#contact" class="rounded-full bg-accent px-4 py-2 text-sm font-medium hover:bg-accent2 transition-colors">Let's talk</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HI, I'M KENJIE sits behind the 3D head (fixed layer, below the canvas) -->
+  <div id="h1-layer" class="pointer-events-none fixed inset-x-0 -z-10">
+    <h1 class="bg-gradient-to-b from-gray-100 to-gray-500 bg-clip-text text-center text-[clamp(34px,11.5vw,185px)] font-bold uppercase leading-[.95] tracking-tight text-transparent whitespace-nowrap">Hi, I'm Kenjie</h1>
+  </div>
+
+  <!-- Pinned stage: scroll drives the head from centre to the left while the role slides in -->
+  <section id="stage-wrap" class="relative z-10 h-screen overflow-hidden">
+    <div id="ui" class="absolute inset-0">
+      <p id="tag" class="absolute bottom-[19%] left-5 right-5 text-center text-xs font-bold leading-relaxed [text-shadow:0_1px_10px_rgba(0,0,0,.9)] sm:bottom-[12%] sm:left-12 sm:right-auto sm:max-w-[240px] sm:text-left">A full-stack developer passionate about building fast, reliable and memorable web apps.</p>
+      <a id="cta" href="#contact" class="cta-primary absolute bottom-[8%] left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-pink-500 to-accent2 px-8 py-4 text-sm font-bold transition-transform hover:scale-105 sm:bottom-[12%] sm:left-auto sm:right-12 sm:translate-x-0">Contact me</a>
+      <div class="absolute inset-y-0 left-[38%] right-4 flex items-center sm:left-[40%] sm:right-10">
+        <h2 id="role-in" class="bg-gradient-to-r from-pink-400 via-violet-400 to-sky-300 bg-clip-text text-[clamp(1.6rem,7.5vw,7rem)] font-bold uppercase leading-[.92] tracking-tight text-transparent opacity-0">Full-Stack<br>Developer</h2>
+      </div>
+      <div id="cue" class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs tracking-widest text-white/50 sm:bottom-5">SCROLL ↓</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="relative z-10 mx-auto max-w-4xl px-5 py-28 text-center sm:px-8">
+    <div data-reveal class="glass rounded-3xl p-8 sm:p-14">
+      <p class="text-xs uppercase tracking-[.3em] text-violet-300">About me</p>
+      <h2 class="mt-3 text-3xl font-bold sm:text-5xl">Efficient. Aesthetic. Functional.</h2>
+      <p class="mt-6 text-white/60">I create digital experiences that balance efficiency, aesthetics and functionality. UI/UX designer and full-stack developer based in Cavite, Philippines.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="relative z-10 mx-auto max-w-6xl px-5 py-24 sm:px-8">
+    <div data-reveal class="mb-12">
+      <p class="text-xs uppercase tracking-[.3em] text-violet-300">Technologies</p>
+      <h2 class="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">Technical Skills</h2>
+      <p class="mt-4 max-w-xl text-white/60">Technologies and tools I use to design and build digital experiences.</p>
+    </div>
+    <div id="skills-grid" class="grid grid-cols-1 items-start gap-5 md:grid-cols-2"></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="relative z-10 mx-auto max-w-6xl px-5 py-24 sm:px-8">
+    <div data-reveal class="mb-12"><p class="text-xs uppercase tracking-[.3em] text-violet-300">What I do</p><h2 class="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">Services</h2></div>
+    <div id="services-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="relative z-10 mx-auto max-w-5xl px-5 pb-40 pt-28 sm:px-8">
+    <div data-reveal class="mb-14"><p class="text-xs uppercase tracking-[.3em] text-violet-300">Selected work</p><h2 class="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">Projects</h2></div>
+    <div id="stack"></div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="relative z-10 py-28">
+    <div data-reveal class="mx-auto mb-14 max-w-6xl px-5 text-center sm:px-8"><p class="text-xs uppercase tracking-[.3em] text-violet-300">Testimonials</p><h2 class="mx-auto mt-3 max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">What my clients are saying</h2></div>
+    <!-- rows slide sideways as you scroll: no buttons -->
+    <div id="t-rows" class="space-y-5 overflow-hidden py-4"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="relative z-10 px-5 py-32 text-center">
+    <div data-reveal>
+      <p class="text-xs uppercase tracking-[.3em] text-violet-300">Contact</p>
+      <h2 class="mx-auto mt-3 max-w-3xl text-5xl font-bold tracking-tight sm:text-8xl">Let's <span class="bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent">connect.</span></h2>
+      <p class="mx-auto mt-6 max-w-xl text-white/60">Have a project in mind, or just want to say hi? My inbox is open.</p>
+      <a href="mailto:kenjiewushi@gmail.com" class="cta-primary mt-10 inline-block rounded-full bg-gradient-to-r from-accent to-accent2 px-10 py-4 font-medium transition-transform hover:scale-105">kenjiewushi@gmail.com</a>
+      <div class="mt-8 flex justify-center gap-4" aria-label="Social media links">
+        <a class="glass grid h-12 w-12 place-items-center rounded-full text-white/60 transition-colors hover:text-white" href="https://www.facebook.com/kenjie.wu.2024" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V21h3.4Z"/></svg>
+        </a>
+        <a class="glass grid h-12 w-12 place-items-center rounded-full text-white/60 transition-colors hover:text-white" href="https://www.instagram.com/saint.kkk07/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="glass grid h-12 w-12 place-items-center rounded-full text-white/60 transition-colors hover:text-white" href="
+https://discord.com/users/834676475142733874" target="_blank" rel="noopener noreferrer" aria-label="Discord" title="Discord">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.7 5.3a18.7 18.7 0 0 0-4.6-1.4l-.6 1.2a17.2 17.2 0 0 0-5 0l-.6-1.2a18.7 18.7 0 0 0-4.6 1.4C1.4 9.6.6 13.8 1 18a18.8 18.8 0 0 0 5.7 2.9l1.2-2a12 12 0 0 1-1.9-.9l.5-.4a13.4 13.4 0 0 0 11 0l.5.4a12 12 0 0 1-1.9.9l1.2 2A18.8 18.8 0 0 0 23 18c.5-4.9-.8-9-3.3-12.7ZM8.7 14.8c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg>
+        </a>
+        <a class="glass grid h-12 w-12 place-items-center rounded-full text-white/60 transition-colors hover:text-white" href="https://www.linkedin.com/in/kenjie-nebril" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 3.5a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4ZM3.3 9.5h3.8v11H3.3v-11Zm6.2 0h3.6V11h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.5 4.5 5.7v5.7h-3.8v-5.1c0-1.2 0-2.8-1.8-2.8s-2.1 1.3-2.1 2.7v5.2H9.5v-11Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="relative z-10 px-5 pb-8 text-center text-xs text-white/30">&copy; 2026 Kenjie. All rights reserved.</footer>
+
+<!-- Libraries (all from cdnjs) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+<script src="Portfolio.js"></script>
+</body>
+</html>
