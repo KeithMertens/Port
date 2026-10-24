@@ -9,6 +9,7 @@ const WORKS = [
   ['CATHUB', 'Web app', 'Dating site for cats', 'https://github.com/KeithMertens/Website', 'Images/catttt.png'],
   ['Student Management', 'Full-stack', 'Student records system', 'https://github.com/KeithMertens/STUDFORSHARING', 'Images/screen.png'],
   ['WuHotel', 'Website WuHotel', 'a website with a real time booking systemm and database', 'https://wuhotel.vercel.app/', 'Images/Website.png'],
+  ['Cafe', 'Web app', 'Local Cafe', 'https://keithmertens.github.io/CafeTahimik/', 'Images/wow.png'],
   ]
   
 const grid = document.getElementById('stack');
